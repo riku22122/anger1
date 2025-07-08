@@ -1,0 +1,376 @@
+/* 全体設定 */
+
+body {
+
+  font-family: sans-serif;
+
+  margin: 0;
+
+  padding: 0;
+
+  background-color: #b8d4ff;
+
+  color: #333;
+
+}
+
+.main-container {
+
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  padding: 15px;
+
+}
+
+/* タイトルとボタン */
+
+.header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  margin-bottom: 15px;
+
+}
+
+.header h1 {
+
+  margin: 0;
+
+  font-size: 1.5em;
+
+}
+
+button.info-btn {
+
+  background: none;
+
+  border: none;
+
+  font-size: 1.2em;
+
+  cursor: pointer;
+
+}
+
+/* 入力セクション */
+
+.input-section {
+
+  background-color: #fff;
+
+  padding: 15px;
+
+  border-radius: 6px;
+
+  margin-bottom: 20px;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.field {
+
+  margin-bottom: 15px;
+
+}
+
+label {
+
+  font-weight: bold;
+
+  display: block;
+
+  margin-bottom: 5px;
+
+}
+
+textarea,
+
+select,
+
+input[type="text"] {
+
+  width: 100%;
+
+  padding: 8px;
+
+  font-size: 14px;
+
+  border-radius: 4px;
+
+  border: 1px solid #ccc;
+
+  box-sizing: border-box;
+
+}
+
+textarea {
+
+  height: 60px;
+
+  resize: vertical;
+
+}
+
+.button-group {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+}
+
+.button-group button {
+
+  padding: 10px;
+
+  width: 44px;
+
+  border: 2px solid #ccc;
+
+  border-radius: 6px;
+
+  background: #f9f9f9;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  transition: 0.2s;
+
+}
+
+.button-group button:hover {
+
+  background-color: #e0f7fa;
+
+}
+
+.button-group button.selected {
+
+  background-color: #2196f3;
+
+  color: #fff;
+
+  border-color: #1976d2;
+
+}
+
+/* サポート入力欄（怒り分類に応じて表示） */
+
+#category-input {
+
+  margin-top: 10px;
+
+  display: none;
+
+}
+
+#category-hint {
+
+  margin-bottom: 6px;
+
+  font-size: 0.9em;
+
+  color: #555;
+
+}
+
+/* 保存ボタン */
+
+#record-btn {
+
+  padding: 12px 20px;
+
+  font-size: 16px;
+
+  border-radius: 6px;
+
+  background-color: #4caf50;
+
+  color: white;
+
+  border: none;
+
+  cursor: pointer;
+
+  width: 100%;
+
+  margin-top: 10px;
+
+}
+
+#record-btn:hover {
+
+  background-color: #43a047;
+
+}
+
+/* 記録一覧 */
+
+.record {
+
+  background: #fff;
+
+  border-left: 5px solid #ccc;
+
+  margin-bottom: 12px;
+
+  padding: 12px;
+
+  border-radius: 4px;
+
+}
+
+.record-summary {
+
+  cursor: pointer;
+
+  font-weight: bold;
+
+}
+
+.record-details {
+
+  display: none;
+
+  margin-top: 10px;
+
+}
+
+button.edit-btn,
+
+button.delete-btn {
+
+  margin-right: 5px;
+
+  padding: 5px 10px;
+
+  font-size: 14px;
+
+  border-radius: 4px;
+
+  border: none;
+
+  cursor: pointer;
+
+}
+
+button.edit-btn {
+
+  background-color: #2196f3;
+
+  color: white;
+
+}
+
+button.delete-btn {
+
+  background-color: #f44336;
+
+  color: white;
+
+}
+
+/* モーダル共通 */
+
+.modal {
+
+  display: none;
+
+  position: fixed;
+
+  z-index: 9999;
+
+  left: 0;
+
+  top: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  overflow: auto;
+
+  background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+.modal-content {
+
+  background-color: #fff;
+
+  margin: 10% auto;
+
+  padding: 20px;
+
+  border-radius: 8px;
+
+  max-width: 90%;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.close {
+
+  color: #aaa;
+
+  float: right;
+
+  font-size: 24px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+}
+
+.close:hover {
+
+  color: black;
+
+}
+
+/* スマホ対応 */
+
+@media (max-width: 600px) {
+
+  .header {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+  }
+
+  .button-group button {
+
+    width: 32px;
+
+    font-size: 14px;
+
+    padding: 6px;
+
+  }
+
+  .modal-content {
+
+    margin-top: 25%;
+
+    font-size: 0.95em;
+
+  }
+
+}
+ 

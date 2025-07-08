@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>怒りの記録</title>
+  <link rel="stylesheet" href="anger_style.css" />
+</head>
+<body>
+  <div class="main-container">
+    <header class="header">
+      <h1>怒りの記録</h1>
+      <button id="open-info-modal" class="info-button">怒りとは？</button>
+    </header>
+
+    <section class="input-section">
+      <div class="field">
+        <label>怒りの度合い（1〜10）:</label>
+        <div class="button-group" id="anger-buttons"></div>
+        <input type="hidden" id="anger" />
+      </div>
+
+      <div class="field">
+        <label for="event">何が起きたか:</label>
+        <textarea id="event" placeholder=""></textarea>
+      </div>
+
+      <div class="field">
+        <label for="category">怒りの分類:</label>
+        <div class="category-row">
+          <select id="category">
+            <option value="">-- 選択してください --</option>
+            <option value="価値観のずれ">価値観のずれ</option>
+            <option value="不公平感">不公平感</option>
+            <option value="侮辱・軽視">侮辱・軽視</option>
+            <option value="嫉妬・比較">嫉妬・比較</option>
+            <option value="自分への怒り">自分への怒り</option>
+            <option value="心身の余裕のなさ">心身の余裕のなさ</option>
+            <option value="社会・正義への怒り">社会・正義への怒り</option>
+          </select>
+          <button id="open-category-modal" class="info-button">分類について</button>
+        </div>
+      </div>
+
+      <!-- 🔽 選択に応じて表示される欄（順番を修正済み） -->
+      <div id="category-input" class="field" style="display:none;">
+        <p id="category-hint" class="hint-text"></p>
+        <label id="category-description-label"></label>
+        <textarea id="category-description" placeholder=""></textarea>
+      </div>
+
+      <div class="field">
+        <label>再評価（1〜10）:</label>
+        <div class="button-group" id="reeval-buttons"></div>
+        <input type="hidden" id="reevaluation" />
+      </div>
+
+      <button id="record-btn">保存</button>
+    </section>
+
+    <section>
+      <h2>記録一覧</h2>
+      <div id="records"></div>
+    </section>
+  </div>
+
+  <!-- モーダル: 怒りとは -->
+  <div id="info-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-info-modal">&times;</span>
+      <h3>怒りとは？</h3>
+      <p>怒りは、あなたの大切にしている価値観や期待が裏切られたときに生じる自然な感情です。</p>
+      <p>このアプリでは、その怒りの原因や分類を記録し、後から振り返ることで自己理解を深めることを目指しています。</p>
+    </div>
+  </div>
+
+  <!-- モーダル: 分類について -->
+  <div id="category-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-category-modal">&times;</span>
+      <h3>怒りの分類について</h3>
+      <ul>
+        <li><strong>価値観のずれ:</strong>「○○であるべき」が衝突</li>
+        <li><strong>不公平感:</strong> 頑張りが報われない感覚</li>
+        <li><strong>侮辱・軽視:</strong> 見下された・馬鹿にされたと感じたとき</li>
+        <li><strong>嫉妬・比較:</strong> 他人と比べて自分が劣っていると感じたとき</li>
+        <li><strong>自分への怒り:</strong> 自己嫌悪や後悔など内向きの怒り</li>
+        <li><strong>心身の余裕のなさ:</strong> 疲れやストレスで怒りやすくなっている状態</li>
+        <li><strong>社会・正義への怒り:</strong> 不正や理不尽に対する怒り</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="anger_script.js"></script>
+</body>
+</html>
