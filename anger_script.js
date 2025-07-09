@@ -3,27 +3,33 @@
 document.addEventListener("DOMContentLoaded", function () {
 
 
-document.getElementById("copy-btn").addEventListener("click", () => {
+document.getElementById("copy-all-btn").addEventListener("click", () => {
   const records = JSON.parse(localStorage.getItem("angerRecords") || "[]");
   if (records.length === 0) {
-    alert("記録がありません。");
+    alert("コピーする記録がありません。");
     return;
   }
 
-  const text = records.map(rec => {
-    return `【${rec.date}】
-怒り度: ${rec.anger}
-怒りの分類: ${rec.category}
-出来事: ${rec.event}
-分類後の記述: ${rec.categoryDescription}
-再評価: ${rec.reevaluation || "未評価"}
---------------------`;
-  }).join("\n\n");
+  const text = records.map(r =>
+    `【${r.date}】怒り度:${r.anger}\n分類:${r.category}\n出来事:${r.event}\n分類後:${r.categoryDescription}\n再評価:${r.reevaluation ?? "未評価"}\n`
+  ).join("\n------------------\n");
 
+  // iPhoneでも動きやすい clipboard API 使用
   navigator.clipboard.writeText(text).then(() => {
     alert("記録をコピーしました！");
-  }).catch(() => {
-    alert("コピーに失敗しました。");
+  }).catch(err => {
+    // fallback（古いiOSや無効時）
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      const success = document.execCommand("copy");
+      alert(success ? "記録をコピーしました！" : "コピーに失敗しました");
+    } catch (e) {
+      alert("コピーに失敗しました");
+    }
+    document.body.removeChild(textarea);
   });
 });
 
