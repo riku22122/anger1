@@ -2,6 +2,32 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
+
+document.getElementById("copy-btn").addEventListener("click", () => {
+  const records = JSON.parse(localStorage.getItem("angerRecords") || "[]");
+  if (records.length === 0) {
+    alert("記録がありません。");
+    return;
+  }
+
+  const text = records.map(rec => {
+    return `【${rec.date}】
+怒り度: ${rec.anger}
+怒りの分類: ${rec.category}
+出来事: ${rec.event}
+分類後の記述: ${rec.categoryDescription}
+再評価: ${rec.reevaluation || "未評価"}
+--------------------`;
+  }).join("\n\n");
+
+  navigator.clipboard.writeText(text).then(() => {
+    alert("記録をコピーしました！");
+  }).catch(() => {
+    alert("コピーに失敗しました。");
+  });
+});
+
+
   const angerButtons = document.getElementById("anger-buttons");
 
   const reevaluationButtons = document.getElementById("reeval-buttons");
